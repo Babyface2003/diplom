@@ -10,9 +10,9 @@ def run_script(script_name):
 
 def main():
     scripts = [
-        "Download_in_EOC.py",
-        "for_4_groups_mkdir.py",
-        "1-3_group.py"
+        "download.py",
+        "process_files.py",
+        "split_groups.py"
     ]
 
     for script in scripts:
