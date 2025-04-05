@@ -106,7 +106,9 @@ def main():
         '2 курс': 'https://edu.stankin.ru/pluginfile.php/518221/mod_folder/content/0/2%20%D0%BA%D1%83%D1%80%D1%81.xls?forcedownload=1',
         '3 курс': 'https://edu.stankin.ru/pluginfile.php/518222/mod_folder/content/0/3%20%D0%BA%D1%83%D1%80%D1%81.xls?forcedownload=1',
         '4 курс': 'https://edu.stankin.ru/pluginfile.php/518223/mod_folder/content/0/4%20%D0%BA%D1%83%D1%80%D1%81.xls?forcedownload=1',
-        '5 курс': 'https://edu.stankin.ru/pluginfile.php/518224/mod_folder/content/0/5%20%D0%BA%D1%83%D1%80%D1%81.xls?forcedownload=1'
+        '5 курс': 'https://edu.stankin.ru/pluginfile.php/518224/mod_folder/content/0/5%20%D0%BA%D1%83%D1%80%D1%81.xls?forcedownload=1',
+        '1 курс мага': 'https://edu.stankin.ru/pluginfile.php/519271/mod_folder/content/0/1%20%D0%BA%D1%83%D1%80%D1%81%20%D0%BC%D0%B0%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D1%83%D1%80%D1%8B.xls?forcedownload=1',
+        '2 курс мага': 'https://edu.stankin.ru/pluginfile.php/518226/mod_folder/content/0/2%20%D0%BA%D1%83%D1%80%D1%81%20%D0%BC%D0%B0%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D1%83%D1%80%D1%8B.xls?forcedownload=1'
     }
     output_dir = "data"
     if os.path.exists(output_dir):

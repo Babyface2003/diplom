@@ -4,6 +4,7 @@ from openpyxl.reader.excel import load_workbook
 from openpyxl.workbook import Workbook
 from openpyxl.styles import Font
 
+
 def split_data_by_condition(data):
     files = []
     current_file_data = []
@@ -16,6 +17,7 @@ def split_data_by_condition(data):
     if current_file_data:
         files.append(pd.DataFrame(current_file_data))
     return files
+
 
 def process_files_in_directory(directory):
     for root, dirs, files in os.walk(directory):
@@ -56,9 +58,10 @@ def process_files_in_directory(directory):
                 else:
                     print(f"Файл '{file_name}' не требует разделения.")
 
+
 script_dir = os.path.dirname(os.path.abspath(__file__))
 base_path = os.path.join(script_dir, 'data')
-sub_dirs = ["1_курс", "2_курс", "3_курс", "4_курс", "5_курс"]
+sub_dirs = ["1_курс", "2_курс", "3_курс", "4_курс", "5_курс", "1_курс_мага", '2_курс_мага']
 for sub_dir in sub_dirs:
     dir_path = os.path.join(base_path, sub_dir)
     if os.path.exists(dir_path):
