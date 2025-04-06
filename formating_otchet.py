@@ -91,10 +91,14 @@ def combined_excel_files():
     output = Path(path) / "combined.xlsx"
     if output.exists():
         output.unlink()
+
     with open("subject_to_files.json", "r", encoding="utf-8") as f:
         subject_groups = json.load(f)
     with open("scripts/group_directions.json", "r", encoding="utf-8") as f:
         group_dirs = json.load(f)
+    with open("subject_to_files_extended.json", "r", encoding="utf-8") as f:
+        extended_subject_data = json.load(f)
+
     with pd.ExcelWriter(output, engine="openpyxl") as writer:
         for folder in FOLDERS:
             folder_path = Path("scripts/data") / folder
@@ -117,6 +121,26 @@ def combined_excel_files():
                         ws["B3"] = "Лектор"
                         ws["B4"] = "Семинар"
                         ws["B5"] = "Лабораторные"
+
+                        # новая логика для заполнения преподавателей
+                        subject_data = extended_subject_data.get(subject, [])
+                        current_lecturer = ""
+
+                        for entry in subject_data:
+                            entry_type = entry["type"]
+                            teacher = entry["teacher"]
+                            entry_group = entry["group"]
+
+                            if entry_type == "Лекции":
+                                current_lecturer = teacher
+                                ws["C3"] = current_lecturer
+                                continue
+
+                            if entry_group.startswith(group):
+                                if entry_type == "Практические":
+                                    ws["C4"] = teacher
+                                elif entry_type == "Лабораторные":
+                                    ws["C5"] = teacher
     wb = load_workbook(output)
     for ws in wb.worksheets:
         set_worksheet_formats(ws)
