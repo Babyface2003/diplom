@@ -14,7 +14,10 @@ def main():
     scripts = [
         "download.py",
         "process_files.py",
-        "split_groups.py"
+        "split_groups.py",
+        "json_name_subjects.py",
+        "subject_to_files_extended.py",
+        "formating_otchet.py"
     ]
 
     for script in scripts:

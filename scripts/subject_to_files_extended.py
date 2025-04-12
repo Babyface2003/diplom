@@ -3,8 +3,8 @@ import json
 import os
 import re
 
-data_dir = "scripts/data"
-file_path = "ИТиВС_Сведения_к_составлению_расписания_Весна_2025.xlsx"
+data_dir = "data"
+file_path = os.path.join("..", "ИТиВС_Сведения_к_составлению_расписания_Весна_2025.xlsx")
 
 df = pd.read_excel(file_path, header=None, skiprows=4)
 
@@ -67,7 +67,7 @@ def main():
                     }
                     subject_files_extended[current_subject].append(entry)
 
-    with open("subject_to_files_extended.json", "w", encoding="utf-8") as f:
+    with open("../scripts/subject_to_files_extended.json", "w", encoding="utf-8") as f:
         json.dump(subject_files_extended, f, ensure_ascii=False, indent=2)
 
 

@@ -3,12 +3,9 @@ import requests
 import xlrd
 from bs4 import BeautifulSoup
 import os
-import pandas as pd
 from openpyxl import Workbook
 from openpyxl.styles import Font
 from concurrent.futures import ThreadPoolExecutor
-import xlwings as xw
-import time
 
 
 def login():

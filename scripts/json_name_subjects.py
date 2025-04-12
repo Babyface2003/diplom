@@ -3,8 +3,8 @@ import json
 import os
 import re
 
-data_dir = "scripts/data"
-file_path = "ИТиВС_Сведения_к_составлению_расписания_Весна_2025.xlsx"
+data_dir = "data"
+file_path = os.path.join("..", "ИТиВС_Сведения_к_составлению_расписания_Весна_2025.xlsx")
 
 df = pd.read_excel(file_path, header=None, skiprows=4)
 
@@ -45,6 +45,6 @@ for _, row in df.iterrows():
 
 subject_files_cleaned = {k: list(set(v)) for k, v in subject_files_cleaned.items()}
 
-output_path = "subject_to_files.json"
+output_path = "../scripts/subject_to_files.json"
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(subject_files_cleaned, f, ensure_ascii=False, indent=2)
