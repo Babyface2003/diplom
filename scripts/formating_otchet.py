@@ -6,6 +6,7 @@ from openpyxl import Workbook, load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, Alignment
+from openpyxl.styles import Border, Side
 
 FOLDERS = [
     "1_курс", "2_курс", "3_курс",
@@ -59,14 +60,29 @@ def shorten_subject(subject):
 
 
 def set_worksheet_formats(ws):
-    # Заголовок
     ws.merge_cells("A1:H1")
+    thin_border = Border(
+        left=Side(style='thin'),
+        right=Side(style='thin'),
+        top=Side(style='thin'),
+        bottom=Side(style='thin')
+    )
     for cell in ws[1]:
         cell.font = Font(bold=True)
     ws["A1"].alignment = Alignment(horizontal="center", vertical="center")
-    # Объединение данных
     row_h = 7
     max_col = ws.max_column
+    for col in range(1, max_col + 1):
+        cell = ws.cell(row=row_h, column=col)
+        cell.border = thin_border
+
+    # Применяем границы к строкам с данными
+    for r in range(row_h + 1, ws.max_row + 1):
+        vals = [ws.cell(row=r, column=c).value for c in range(1, max_col + 1)]
+        if all(v is None or str(v).strip() == "" for v in vals):
+            break
+        for c in range(1, max_col + 1):
+            ws.cell(row=r, column=c).border = thin_border
     for r in range(row_h, ws.max_row + 1):
         vals = [ws.cell(row=r, column=c).value for c in range(1, max_col + 1)]
         if all(v is None or str(v).strip() == "" for v in vals):
@@ -142,8 +158,8 @@ def combined_excel_files():
                 ws["H3"] = group
                 ws["H4"] = group_dirs.get(group, "")
                 ws["B3"] = "Лектор"
-                ws["B4"] = "Семинарист"
-                ws["B5"] = "Лаборант"
+                ws["B4"] = "Семинар"
+                ws["B5"] = "Лабораторные"
                 # преподаватели
                 for e in extended.get(subject, []):
                     t, teacher, grp = e.get('type'), e.get('teacher'), e.get('group')
