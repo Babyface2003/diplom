@@ -54,7 +54,7 @@ def process_files_in_directory(directory):
                         new_workbook.save(output_path)
                     if os.path.exists(file_path):
                         os.remove(file_path)
-                        # print(f"Исходный файл '{file_path}' был удалён.")
+
                 else:
                     print(f"Файл '{file_name}' не требует разделения.")
 

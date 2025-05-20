@@ -65,9 +65,9 @@ for subfolder in subfolders:
                                 target_cell.fill = copy(source_cell.fill)
                         output_path = os.path.join(output_folder, f"{group}.xlsx")
                         new_wb.save(output_path)
-                        # print(f"Данные для группы {group} сохранены в файл {output_path}")
+
                     os.remove(file_path)
-                    # print(f"Файл {file_path} удалён после обработки.")
+
                 except Exception as e:
                     print(f"Ошибка при обработке файла {file_path}: {e}")
 
